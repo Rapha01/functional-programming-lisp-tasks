@@ -1,0 +1,29 @@
+;ignore this file for grading
+#lang racket
+
+;1.
+(define (getFromIdx idx xs)
+  (if (= idx 0)
+      xs
+      (getFromIdx (- idx 1) (cdr xs))))
+
+(define list1
+  (list 0 1 2 3 4 5 6))
+
+(getFromIdx 2 list1)
+
+;2.
+
+(define (combo xs ys)
+  (if (and (not (empty? xs)) (not (empty? ys)))
+      (cons (car xs) (cons (car ys) (combo (cdr xs) (cdr ys))))
+      (if (empty? xs) ys xs)))
+
+(combo (list 1 3 5) (list 2 4))
+
+;3.
+
+(define (toCelsius fs)
+  (map (lambda (x) (* (- x 32) (/ 5 9))) fs))
+
+(toCelsius (list -40 32 50))
